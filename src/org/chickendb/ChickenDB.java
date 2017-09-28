@@ -29,19 +29,19 @@ public class ChickenDB<K, M extends IModel<K>> {
 		add(item);
 	}
 	
-	public M getByKey(String key) {
+	public M getByKey(K key) {
 		return db.get(key);
 	}
 
 	public void delete(M item) {
-		db.remove(item.getKey());
+		delete(item.getKey());
 	}
 	
-	public void delete(String key) {
+	public void delete(K key) {
 		db.remove(key);
 	}
 	
 	public Finder<K, M> finder() {
-		return new Finder<K, M>(db);
+		return new Finder<>(db);
 	}
 }
